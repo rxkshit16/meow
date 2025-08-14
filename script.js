@@ -53,4 +53,25 @@ var turn = {
   }
 };
 
+// Age timer
+function startTimer(){
+  const birthDate=new Date(2010,0,27,12,0,0); // 27 Jan 2010
+  function updateTimer(){
+    const now=new Date();
+    const diff=now-birthDate;
+    let remaining=diff/1000;
+    const years=Math.floor(remaining/31557600);
+    remaining%=31557600;
+    const days=Math.floor(remaining/86400);
+    remaining%=86400;
+    const hours=Math.floor(remaining/3600);
+    remaining%=3600;
+    const minutes=Math.floor(remaining/60);
+    const seconds=Math.floor(remaining%60);
+    ageTimer.textContent=`${years} yrs • ${days} d • ${hours} h • ${minutes} m • ${seconds} s`;
+  }
+  updateTimer();
+  setInterval(updateTimer,1000);
+}
+
 turn.init('book');
